@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block title %}О диспансере - Онкологический
+диспансер{% endblock %} {% block content %} {% load static %} <link
+rel="stylesheet" href="{% static "css/form.css" %}">
+
+<div class="container">
+  <h2>Редактировать заявку</h2>
+  <form method="post" class="submission-form">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+  </form>
+</div>
+
+{% endblock %}

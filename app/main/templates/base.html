@@ -1,0 +1,51 @@
+{% load static %}
+
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Онкологический диспансер</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="{% url "main:main" %}" class="main-link">Онкологический диспансер</a>
+      </h1>
+      <nav>
+        <div class="container">
+          <div class="nav-left">
+            <a href="{% url "main:ustav" %}">Внутренний устав</a>
+            <a href="{% url "main:contacts" %}">Контакты</a>
+          </div>
+          <div class="nav-right">
+            {% if user.is_authenticated %}
+              <span>Пользователь: {{ user.username }}</span>
+          
+              <a href="{% url 'main:form' %}">Оставить заявку</a>
+          
+              {% if user.is_staff %}
+                <a href="{% url 'main:review_submissions' %}">Проверить заявки</a> 
+              {% endif %}
+          
+              <a href="{% url 'main:logout' %}">Выйти</a>
+            {% else %}
+              <a href="{% url 'main:login' %}">Войти</a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-left">
+          <a href="#">Внутренний устав</a>
+          <a href="#">Контакты</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

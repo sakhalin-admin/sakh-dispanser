@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block content %} {% load static %} <link
+rel="stylesheet" href="{% static "css/form.css" %}">
+<div class="container">
+  <h2>Заявки</h2>
+
+  <table
+    border="1"
+    cellpadding="8"
+    cellspacing="0"
+    style="width: 100%; border-collapse: collapse"
+  >
+    <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Телефон</th>
+        <th>Отдел</th>
+        <th>Должность</th>
+        <th>Комментарий</th>
+        <th>Отправлено</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for submission in submissions %}
+      <tr>
+        <td>{{ submission.name }}</td>
+        <td>{{ submission.phone }}</td>
+        <td>{{ submission.department }}</td>
+        <td>{{ submission.position }}</td>
+        <td class="table-comment">
+          {{ submission.comment|safe|linebreaksbr }}
+        </td>
+        <td>{{ submission.submitted_at }}</td>
+        <td class="action-links">
+          <div>
+            <a href="{% url 'main:edit_submission' submission.id %}"
+              >Изменить ✏️</a
+            >
+          </div>
+          <div>
+            <a href="{% url 'main:delete_submission' submission.id %}"
+              >Удалить 🗑️</a
+            >
+          </div>
+          <div>
+            <a href="{% url 'main:add_comment' submission.id %}"
+              >Добавить комментарий 💬</a
+            >
+          </div>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="7">Заявок пока нет.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

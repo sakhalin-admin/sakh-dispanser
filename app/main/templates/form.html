@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}О диспансере - Онкологический
+диспансер{% endblock %} {% block content %} {% load static %} <link
+rel="stylesheet" href="{% static "css/form.css" %}">
+<section>
+  <div class="container">
+    <h2>Оставить заявку</h2>
+    <form method="post" class="submission-form" action="{% url 'main:form' %}">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Отправить</button>
+    </form>
+
+    {% if messages %} {% for message in messages %}
+    <div class="success-message">{{ message }}</div>
+    {% endfor %} {% endif %}
+  </div>
+</section>
+{% endblock %}
