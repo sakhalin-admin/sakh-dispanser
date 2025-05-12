@@ -1,0 +1,98 @@
+html, body {
+  margin: 0;
+  padding: 0; 
+  height: 100%;
+  font-family: Roboto;
+  background-color: #f9f9f9;
+  font-size: 18px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+main {
+  padding: 1rem;
+  flex: 1;
+}
+
+header {
+  background-color: #005d4b;
+  color: white;
+}
+
+header h1 {
+  text-align: center;
+  margin: 0;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+}
+
+.main-link {
+  all: unset;
+  cursor: pointer;
+}
+
+nav {
+  width: 100%;
+  background-color: #006c57;
+  padding: 1rem 0;
+}
+
+nav a {
+  font-weight: bold;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-left a,
+.nav-right a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #004c3b;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-left {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-left a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-left a:hover,
+.footer-right a:hover {
+  text-decoration: underline;
+}
